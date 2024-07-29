@@ -1,21 +1,22 @@
 const initialState = {
-  favorites: [],
+  favorites: JSON.parse(localStorage.getItem('favorites')) || []
 };
 
 const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_FAVORITE':
-      if (state.favorites.some(fav => fav.key === action.payload.key)) {
-        return state;
-      }
+      const newFavoritesAdd = [...state.favorites, action.payload];
+      localStorage.setItem('favorites', JSON.stringify(newFavoritesAdd));
       return {
         ...state,
-        favorites: [...state.favorites, action.payload],
+        favorites: newFavoritesAdd
       };
     case 'REMOVE_FAVORITE':
+      const newFavoritesRemove = state.favorites.filter(book => book.key !== action.payload.key);
+      localStorage.setItem('favorites', JSON.stringify(newFavoritesRemove));
       return {
         ...state,
-        favorites: state.favorites.filter(fav => fav.key !== action.payload.key),
+        favorites: newFavoritesRemove
       };
     default:
       return state;
