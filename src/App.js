@@ -24,7 +24,7 @@ function App() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch('https://openlibrary.org/subjects/recommendations.json?limit=12');
+        const response = await fetch('https://openlibrary.org/subjects/recommendations.json?limit=12'); //membatasi jumlah buku tampilan awal
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -44,7 +44,7 @@ function App() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`https://openlibrary.org/search.json?q=${searchQuery}&limit=24`);
+      const response = await fetch(`https://openlibrary.org/search.json?q=${searchQuery}&limit=24`); //membatasi jumlah buku yang tampil setelah melakukan pencarian
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -77,43 +77,43 @@ function App() {
 
   return (
     <Provider store={store}>
-    <Router>
-      <div className="App">
-        <Navbar bg="dark" variant="dark" expand="lg" className='navbar-home'>
-          <Navbar.Brand href="/">Book Finder</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="#" onClick={() => setShowFavorites(false)}>Home</Nav.Link>
-              <Nav.Link href="#" onClick={toggleFavorites}>
-                {showFavorites ? 'Search Books' : 'View Favorites'}
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        <header className="App-header">
-          <h1>{showFavorites ? 'Favorite Books' : 'Book List'}</h1>
-          <SearchBar onSearch={handleSearch}/>
-          <Container>
-            <Routes>
-              <Route path="/" element={
-                <>
-                  <BookList 
-                    books={showFavorites ? favorites : (books.length > 0 ? books : recommendedBooks)} 
-                    loading={loading} 
-                    error={error} 
-                    favorites={favorites}
-                    addFavorite={handleAddFavorite}
-                    removeFavorite={handleRemoveFavorite}
-                  />
-                </>
-              } />
-            </Routes>
-          </Container>
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar bg="dark" variant="dark" expand="lg" className='navbar-home'>
+            <Navbar.Brand href="/">Book Finder</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link href="#" onClick={() => setShowFavorites(false)}>Home</Nav.Link>
+                <Nav.Link href="#" onClick={toggleFavorites}>
+                  {showFavorites ? 'Search Books' : 'View Favorites'}
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+          <header className="App-header">
+            <h1>{showFavorites ? 'Favorite Books' : 'Book List'}</h1>
+            <SearchBar onSearch={handleSearch} />
+            <Container>
+              <Routes>
+                <Route path="/" element={
+                  <>
+                    <BookList
+                      books={showFavorites ? favorites : (books.length > 0 ? books : recommendedBooks)}
+                      loading={loading}
+                      error={error}
+                      favorites={favorites}
+                      addFavorite={handleAddFavorite}
+                      removeFavorite={handleRemoveFavorite}
+                    />
+                  </>
+                } />
+              </Routes>
+            </Container>
+          </header>
+        </div>
       </Router>
-      </Provider>
+    </Provider>
   );
 }
 
