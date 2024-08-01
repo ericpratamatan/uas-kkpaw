@@ -1,3 +1,7 @@
+### API
+
+The API this web using is Open Library API
+
 ### Search Bar
 
 Search bar is use for search the book.
@@ -17,3 +21,7 @@ To register actions (addFavorites, removeFavorites).
 ### Favorites
 
 To store favorite books.
+
+### Authentication User
+
+Added Login and Register

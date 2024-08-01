@@ -56,7 +56,6 @@
 
 .search-bar {
   margin-bottom: 30px;
-  margin-top: 30px;
   display: flex;
 }
 
@@ -71,4 +70,45 @@
 .navbar-home{
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.link-login, .link-register{
+  margin-right: 10px;
+  text-decoration: none;
+  color: grey;
+}
+
+.link-login:hover, .link-register:hover{
+  color: white;
+}
+
+
+.welcome-message{
+  margin-right: 10px;
+}
+
+.header-1{
+  margin-bottom: 70px;
+}
+
+.container-form{
+  width: 600px;
+  margin: auto;
+  padding: 30px;
+  background-color: rgb(92, 91, 91);
+  border-radius: 20px;
+}
+
+.group-form{
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.label-form{
+  margin-top: 6px;
+  float: left;
+}
+
+.btn-form{
+  margin-top: 10px;
 }
